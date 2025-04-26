@@ -12,16 +12,9 @@
         @csrf
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-                <label class="block font-medium">Nom Complet</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Nom Complet" class="w-full px-4 py-3 mt-2 bg-white text-gray-800 border-none rounded-lg focus:outline-none">
+                <label class="block font-medium">Raison Sociale</label>
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Raison Sociale" class="w-full px-4 py-3 mt-2 bg-white text-gray-800 border-none rounded-lg focus:outline-none">
                 @error('name')
-                    <p class="text-red-500 text-sm">{{ $message }}</p>
-                @enderror
-            </div>
-            <div>
-                <label class="block font-medium">Pseudo</label>
-                <input type="text" name="pseudo" value="{{ old('pseudo') }}" placeholder="Pseudo" class="w-full px-4 py-3 mt-2 bg-white text-gray-800 border-none rounded-lg focus:outline-none">
-                @error('pseudo')
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
             </div>
@@ -39,8 +32,6 @@
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
             </div>
-        </div>
-        <div class="mt-4 relative">
             <div>
                 <label class="block font-medium">Mot de passe</label>
                 <input type="password" name="password" placeholder="Mot de passe" class="w-full px-4 py-3 mt-2 bg-white text-gray-800 border-none rounded-lg focus:outline-none">
@@ -48,6 +39,8 @@
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
             </div>
+        </div>
+        <div class="mt-4 relative">
             <div>
                 <label class="block font-medium">Confirmation Mot de passe</label>
                 <input type="password" name="password_confirmation" placeholder="Confirmation" class="w-full px-4 py-3 mt-2 bg-white text-gray-800 border-none rounded-lg focus:outline-none">

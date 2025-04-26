@@ -97,7 +97,7 @@
 <div class="info__top">
     <div class="author__image">
         <img class=""
-            src="{{ $brand && $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/influencer-default.jpg') }}"
+            src="{{ $brand && $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/influencer-default.jpg') }}"
             alt="">
     </div>
     <button type="button" id="profile-upload-btn" class="upload-btn"><i class="fa-solid fa-upload"></i></button>

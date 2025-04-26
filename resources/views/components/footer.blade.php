@@ -5,7 +5,7 @@
             <div class="footer__wrapper d-flex flex-wrap flex-column flex-sm-row gap-4 gap-md-0 gap-sm-3 justify-content-between pt-60 pb-60">
                 <div class="rts__footer__widget max-320">
                     <a href="{{route('brand_display')}}" class="footer__logo" aria-label="logo">
-                    <img src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
+                    <img src="{{ asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
                 </a>
                 </div>
 
@@ -84,7 +84,7 @@
             <div class="footer__wrapper d-flex flex-wrap flex-column flex-sm-row gap-4 gap-md-0 gap-sm-3 justify-content-between pt-60 pb-60">
                 <div class="rts__footer__widget max-320">
                     <a href="{{route('influencer_welcome')}}" class="footer__logo" aria-label="logo">
-                    <img src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
+                    <img src="{{ asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
                 </a>
                 </div>
 
@@ -164,7 +164,7 @@
             <div class="footer__wrapper d-flex flex-wrap flex-column flex-sm-row gap-4 gap-md-0 gap-sm-3 justify-content-between pt-60 pb-60">
                 <div class="rts__footer__widget max-320">
                     <a href="{{route('welcome')}}" class="footer__logo" aria-label="logo">
-                    <img src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
+                    <img src="{{ asset('assets/img/logo/logo.svg') }}" width="160" height="40" alt="logo">
                 </a>
                 </div>
 

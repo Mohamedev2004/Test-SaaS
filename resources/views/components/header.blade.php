@@ -7,7 +7,7 @@
                     @if (auth()->check() && auth()->user()->isBrand())
                     <div class="rts__logo">
                         <a href="{{route('brand_dashboard')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">
@@ -41,15 +41,20 @@
                         </div>
 
                         <div class="header__right__btn d-flex gap-3">
-                            <a href="{{ route('brand_display') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                            <a href="{{ route('brand_display') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Editer Profil</a>
                             <button class="d-md-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i class="fa-solid fa-bars"></i></button>
                         </div>
+                        @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
+                        <div class="header__right__btn d-flex gap-3">
+                            <a href="{{ route('brand_single_profile_page', ['id' => auth()->user()->id]) }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                        </div>
+                        @endif
                     </div>
                     @endif
                     @if (auth()->check() && auth()->user()->isInfluencer())
                     <div class="rts__logo">
                         <a href="{{route('influencer_welcome')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">
@@ -83,16 +88,21 @@
                         </div>
 
                         <div class="header__right__btn d-flex gap-3">
-                            <a href="{{ route('influencer_dashboard') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                            <a href="{{ route('influencer_dashboard') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Editer profil</a>
                             <button class="d-md-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas"><i class="fa-solid fa-bars"></i></button>
                         </div>
+                        @if (auth()->check() && auth()->user()->isInfluencer() && auth()->user()->status === 'Active')
+                        <div class="header__right__btn d-flex gap-3">
+                            <a href="{{ route('influencer_single_profile_page', ['id' => auth()->user()->id]) }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                        </div>
+                        @endif
                     </div>
                     @endif
 
                     @guest
                     <div class="rts__logo">
                         <a href="{{route('welcome')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">

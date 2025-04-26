@@ -6,7 +6,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="rts__logo">
                             <a href="index.html">
-                            <img class="logo__image" src="{{secure_asset('assets/img/logo/logo.svg')}}" width="160" height="40" alt="logo">
+                            <img class="logo__image" src="{{asset('assets/img/logo/logo.svg')}}" width="160" height="40" alt="logo">
                         </a>
                         </div>
 

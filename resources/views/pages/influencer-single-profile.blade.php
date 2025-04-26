@@ -208,13 +208,9 @@
 
                     <!-- Brand Sidebar (Company Info) -->
                     <div class="col-lg-4 d-flex flex-column gap-40">
-                        <div class="company__card">
+                        <!-- <div class="company__card">
                             <div style="margin:auto;width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid white;">
-                                <!-- @php
-                                    $profileImage = $influencer->image
-                                    ? asset('storage/' . $influencer->image)
-                                    : asset('assets/images/influencer-default.jpg');
-                                @endphp -->
+                                
                                 <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="">
                             </div>
                             <h5 class="company__name mt-20">
@@ -222,10 +218,10 @@
                                 {{ $influencer->influencerName }}
                                 @endif</h5>
                             <a href="#contact" class="rts__btn apply__btn mt-40">Contacter</a>
-                        </div>
+                        </div> -->
 
                         <!-- Brand Contact Form -->
-                        <div class="job__contact" id="contact">
+                        <!-- <div class="job__contact" id="contact">
                             <h6 class="fw-semibold mb-20">Contacter
                                 @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
                                 {{ $influencer->influencerName }}
@@ -274,113 +270,13 @@
                                     cet influenceur.
                                 </div>
                             @endauth
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
 
-
-        <!-- job list one end -->
-
-        <!-- top employer -->
-        <!-- top employer -->
-        <!-- top employer -->
-        @if ($influencers->count() >= 5)
-        <div class="rts__section pb-120 overflow-hidden">
-            <div class="container">
-                <div class="row justify-content-center position-relative">
-                    <div class="col-xl-6 col-lg-10">
-                        <div class="rts__section__content text-center mb-60">
-                            <h3 class="rts__section__title section__mb">Autres influenceurs(euses)</h3>
-                        </div>
-                    </div>
-                    <div class="rts__slider__control d-none d-md-flex style-gray z-3 w-100 justify-content-between g-0 position-absolute top-50 translate-middle-y">
-                        <div class="rts__slide__next slider__btn"><i class="fa-sharp fa-solid fa-chevron-left"></i></div>
-                        <div class="rts__slide__prev slider__btn"><i class="fa-sharp fa-solid fa-chevron-right"></i></div>
-                    </div>
-                </div>
-                <div class="row swiper-data overflow-hidden"
-                    data-swiper='{
-                        "slidesPerView": 4.1,
-                        "autoplay": true,
-                        "loop": true,
-                        "navigation": {
-                            "nextEl": ".rts__slide__next",
-                            "prevEl": ".rts__slide__prev"
-                        },
-                        "breakpoints": {
-                            "0": { "slidesPerView": 1.05 },
-                            "576": { "slidesPerView": 1.05 },
-                            "768": { "slidesPerView": 2.05 },
-                            "992": { "slidesPerView": 3.05 },
-                            "1200": { "slidesPerView": 4.05 }
-                        }
-                    }'>
-                    <div class="swiper-wrapper">
-                        @foreach ($influencers as $influencer)
-                            <div class="swiper-slide">
-                                <div class="rts__job__card style__five">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="company__icon bg-transparent">
-                                            <img style="border-radius:8px" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="">
-
-                                        </div>
-                                        @if (auth()->check() && auth()->user()->isBrand())
-                                        <a href="{{ route('show_influencer_auth_brand', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                        @endif
-                                        @if (auth()->check() && auth()->user()->isInfluencer())
-                                        <a href="{{ route('show_influencer_auth_influencer', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                        @endif
-                                        @guest
-                                        <a href="{{ route('show_influencer_guest', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                        @endguest
-                                    </div>
-                                    <div class="d-flex  mt-4 flex-wrap">
-                                        <div class="d-flex gap-2 align-items-center font-md">
-                                            {{ $influencer->sector->name ?? '' }}
-                                        </div>
-                                    </div>
-                                    <div class="font-20 fw-medium job__title mt-3 mb-2">
-                                        <a href="#" aria-label="job" class="job__title">
-                                            @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
-                                            {{ $influencer->influencerName }}
-                                            @endif
-                                        </a>
-                                    </div>
-                                    <p>{{ \Illuminate\Support\Str::limit($influencer->influencerDescription, 60) }}</p>
-                                    <div class="job__tags d-flex flex-wrap gap-2 mt-4">
-                                        <a href="#">{{ $influencer->influencerAge }}</a>
-                                        <a href="#">{{ $influencer->sector->name ?? '' }}</a>
-
-                                        <!-- @auth
-                                            @if (auth()->user()->isBrand())
-                                                <a style="background-color:var(--rts-primary); color: white;"
-                                                    href="{{ route('show_brand_auth_brand', ['id' => $influencer->id]) }}">
-                                                    Profil
-                                                </a>
-                                            @elseif (auth()->user()->isInfluencer())
-                                                <a style="background-color:var(--rts-primary); color: white;"
-                                                    href="{{ route('show_brand_auth_influencer', ['id' => $influencer->id]) }}">
-                                                    Profil
-                                                </a>
-                                            @endif
-                                        @else
-                                            <a style="background-color:var(--rts-primary); color: white;"
-                                                href="{{ route('show_brand_guest', ['id' => $influencer->id]) }}">
-                                                Profil
-                                            </a>
-                                        @endauth -->
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
 
     <!-- top employer end -->
 

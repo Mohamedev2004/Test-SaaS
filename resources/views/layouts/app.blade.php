@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    @PwaHead
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
@@ -59,7 +58,7 @@
     <meta name="twitter:description" content="Cocollab est une plateforme qui met en relation les marques et les influenceurs. Trouvez le bon partenaire pour vos collaborations en toute simplicité.">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ secure_asset('assets/images/favicon.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,12 +68,12 @@
     <title>Cocollab</title>
 
     <!-- Custom Fonts and Icons -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/plugins.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <style>
         .small.text-muted {
             display: none;
@@ -117,11 +116,11 @@
     </div>
     <!-- THEME PRELOADER END -->
     <button type="button" class="rts__back__top" id="rts-back-to-top">
-        <img src="{{ secure_asset('assets/img/icon/arrow.svg') }}" alt="">
+        <img src="{{ asset('assets/img/icon/arrow.svg') }}" alt="">
     </button>
     <!-- all plugin js -->
-    <script src="{{secure_asset('assets/js/plugins.min.js')}}" ></script>
-    <script src="{{secure_asset('assets/js/main.js')}}" ></script>
+    <script src="{{asset('assets/js/plugins.min.js')}}" ></script>
+    <script src="{{asset('assets/js/main.js')}}" ></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (window.innerWidth <= 576) {

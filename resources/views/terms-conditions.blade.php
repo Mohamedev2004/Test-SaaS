@@ -19,13 +19,13 @@
                 </div>
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
                     </div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>

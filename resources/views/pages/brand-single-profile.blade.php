@@ -31,7 +31,7 @@
                         <div class="d-flex gap-4 align-items-center flex-md-row flex-column mx-auto mx-md-0">
                             <div class="company__icon rounded-2 bg-transparent">
                                 <!-- Display brand logo -->
-                                <img style="width:100%; height:100%;border-radius:100px; border: white 4px solid" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
+                                <img style="width:100%; height:100%;border-radius:100px; border: white 4px solid" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
                             </div>
                             <div class="job__meta w-100 d-flex text-center text-md-start flex-column gap-2">
                                 <div class="">
@@ -67,10 +67,10 @@
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common"></div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                                     @foreach (json_decode($post->images, true) as $image)
                                         <div class="col-md-4 mb-3"> <!-- Responsive et espace entre images -->
                                             <div class="card h-100"> <!-- Carte de hauteur égale -->
-                                                <img class="card-img-top rounded-2" src="{{ secure_asset('storage/' . $image) }}" alt="Image du post">
+                                                <img class="card-img-top rounded-2" src="{{ asset('storage/' . $image) }}" alt="Image du post">
                                                 <div class="card-body">
                                                     <p class="card-text text-muted small">Posté le {{ $post->created_at->format('d/m/Y') }}</p>
                                                 </div>
@@ -204,7 +204,7 @@
             <div class="col-lg-4 d-flex flex-column gap-40">
                 <div class="company__card">
                     <div style="margin:auto;width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid white;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
+                        <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
                     </div>
                     <h5 class="company__name mt-20">{{ $brand->brandName }}</h5>
                     <a href="#contact" class="rts__btn apply__btn mt-40">Contacter</a>
@@ -256,126 +256,6 @@
     </div>
 </div>
 
-
-
-
-<!-- job list one end -->
-
-<!-- top employer -->
-<!-- top employer -->
-<!-- top employer -->
-@if ($brands->count() >= 5)
-<div class="rts__section pb-120 overflow-hidden">
-    <div class="container">
-        <div class="row justify-content-center position-relative">
-            <div class="col-xl-6 col-lg-10">
-                <div class="rts__section__content text-center mb-60">
-                    <h3 class="rts__section__title section__mb">Autres Marques</h3>
-                </div>
-            </div>
-            <div class="rts__slider__control d-none d-md-flex style-gray z-3 w-100 justify-content-between g-0 position-absolute top-50 translate-middle-y">
-                <div class="rts__slide__next slider__btn"><i class="fa-sharp fa-solid fa-chevron-left"></i></div>
-                <div class="rts__slide__prev slider__btn"><i class="fa-sharp fa-solid fa-chevron-right"></i></div>
-            </div>
-        </div>
-        <div class="row swiper-data overflow-hidden" data-swiper='{
-            "slidesPerView": 4.1,
-            "autoplay": true,
-            "loop": true,
-            "navigation": {
-                "nextEl": ".rts__slide__next",
-                "prevEl": ".rts__slide__prev"
-            },
-            "breakpoints": {
-                "0": {
-                    "slidesPerView": 1.05
-                },
-                "576": {
-                    "slidesPerView": 1.05
-                },
-                "768": {
-                    "slidesPerView": 2.05
-                },
-                "992": {
-                    "slidesPerView": 3.05
-                },
-                "1200": {
-                    "slidesPerView": 4.05
-                }
-            }
-        }'>
-            <div class="swiper-wrapper">
-                @foreach($brands as $brand)
-                    <div class="swiper-slide">
-                        <div class="rts__job__card style__five">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="company__icon bg-transparent">
-                                    @php
-                                    $logo = $brand->logo_image
-                                        ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                        : secure_asset('assets/images/influencer-default.jpg');
-                                @endphp
-
-                                <img src="{{ $logo }}" class="rounded-1" alt="{{ $brand->brandName }}">
-
-                                </div>
-                                @if (auth()->check() && auth()->user()->isBrand())
-                                <a href="{{ route('show_brand_auth_brand', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                @endif
-                                @if (auth()->check() && auth()->user()->isInfluencer())
-                                <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                @endif
-                                @guest
-                                <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
-                                @endguest
-
-                            </div>
-                            <div class="d-flex gap-3 mt-4 flex-wrap">
-                                <div class="d-flex gap-2 align-items-center font-sm">
-                                    {{ $brand->brandLocalisation  }}
-                                </div>
-                                <div class="d-flex gap-2 align-items-center font-sm">
-                                    {{ $brand->sector->name  }}
-                                </div>
-                            </div>
-                            <div class="font-20 fw-medium job__title mt-3 mb-2">
-                                <a href="#" aria-label="job" class="job__title">
-                                    {{ $brand->brandName }}
-                                </a>
-                            </div>
-                            <p>{{ \Illuminate\Support\Str::limit($brand->brandDescription, 60) }}</p>
-                            <div class="job__tags d-flex flex-wrap gap-2 mt-4">
-                                <a href="#">{{ $brand->brandSize ?? 'Size' }}</a>
-                                <a href="#">{{ $brand->collaboration->name }}</a>
-                                <!-- @if (auth()->check())
-                                {{-- Utilisateur connecté (auth) --}}
-                                    @if (auth()->user()->isBrand())
-                                        <a style="background-color:var(--rts-primary); color: white;" href="{{ route('show_brand_auth_brand', ['id' => $brand->id]) }}">
-                                            Profil
-                                        </a>
-                                    @endif
-                                    @if (auth()->user()->isInfluencer())
-                                    <a style="background-color:var(--rts-primary); color: white;" href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}">
-                                        Profil
-                                    </a>
-                                @endif
-                                @else
-                                    {{-- Utilisateur non connecté (guest) --}}
-                                    <a style="background-color:var(--rts-primary); color: white;" href="{{ route('show_brand_guest', ['id' => $brand->id]) }}">
-                                        Profil
-                                    </a>
-                                @endif -->
-
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</div>
-@endif
 <!-- top employer end -->
 
 <!-- top employer end -->

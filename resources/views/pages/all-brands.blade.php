@@ -19,13 +19,13 @@
                 </div>
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
                     </div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -170,12 +170,12 @@
                                    <!--  @php
                                         $logo = $brand->logo_image
                                             ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                            : secure_asset('assets/images/influencer-default.jpg');
+                                            : asset('assets/images/influencer-default.jpg');
                                     @endphp -->
 
-                                <img class="rounded-5" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
+                                <img class="rounded-5" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
 
-                                    {{-- <img src="{{ secure_asset('storage/'.$brand->logo_image) }}" class="rounded-5" alt="{{ $brand->brandName }}"> --}}
+                                    {{-- <img src="{{ asset('storage/'.$brand->logo_image) }}" class="rounded-5" alt="{{ $brand->brandName }}"> --}}
                                 </div>
                                 <div class="job__meta w-100 d-flex flex-column gap-3">
                                     <div class="d-flex flex-column align-items-center gap-1">
@@ -240,11 +240,11 @@
                                         <div class="author__icon">
                                             <!-- @php
                                                 $logo = $brand->logo_image
-                                                    ? secure_asset('storage/' . $brand->logo_image)
-                                                    : secure_asset('assets/images/influencer-default.jpg');
+                                                    ? asset('storage/' . $brand->logo_image)
+                                                    : asset('assets/images/influencer-default.jpg');
                                             @endphp -->
 
-                                        <img class="rounded-10" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
+                                        <img class="rounded-10" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
                                         </div>
                                         <div class="job__meta">
                                             <div class="d-flex align-items-start flex-column">

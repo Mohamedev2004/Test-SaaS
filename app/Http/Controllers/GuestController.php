@@ -44,7 +44,7 @@ class GuestController extends Controller
                     return [
                         'logo_image' => $brand->logo_image
                             ? Storage::disk('do_spaces')->url($brand->logo_image)
-                            : secure_asset('assets/images/influencer-default.jpg'),
+                            : asset('assets/images/influencer-default.jpg'),
                         'brandName' => $brand->brandName,
                         'brandLocalisation' => $brand->brandLocalisation,
                         'sector_name' => $brand->sector->name,
@@ -163,6 +163,52 @@ class GuestController extends Controller
         $collaborations = Collaboration::all();
         // Return the influencer view and pass the influencer and posts data
         return view('pages.influencer-profile', compact('influencer', 'influencers', 'posts', 'collaborations'));
+    }
+
+
+    public function single_influencer_profile($id)
+    {
+        // Fetch the influencer along with its relationships (collaboration, sector, and posts)
+        $influencer = Influencer::with(['sector'])->where('user_id', $id)->first();
+
+        if (!$influencer ||  !$influencer->sector) {
+            return redirect()->back()->with('error', 'Vous n’avez pas encore créé votre profil complètement.');
+        }
+
+        // Get the user associated with this influencer
+        $user = User::find($influencer->user_id);
+
+        // Fetch the posts associated with the user of this influencer
+        $posts = Post::where('user_id', $user->id)->get();
+
+
+        // Fetch collaborations
+        $collaborations = Collaboration::all();
+        // Return the influencer view and pass the influencer and posts data
+        return view('pages.influencer-single-profile', compact('influencer', 'posts', 'collaborations'));
+    }
+
+    public function single_brand_profile($id)
+    {
+        // Fetch the brand along with its relationships (collaboration, sector, and posts)
+        $brand = Brand::with(['collaboration', 'sector'])->where('user_id', $id)->first();;
+
+        // If no brand found or the necessary relationships are missing, redirect back
+        if (!$brand || !$brand->collaboration || !$brand->sector) {
+            return redirect()->back()->with('error', 'Vous n’avez pas encore créé votre profil complètement.');
+        }
+
+        // Get the user associated with this brand
+        $user = User::find($brand->user_id);
+
+        // Fetch the posts associated with the user of this brand
+        $posts = Post::where('user_id', $user->id)->get();
+
+        // Fetch collaborations
+        $collaborations = Collaboration::all();
+
+        // Return the brand view and pass the brand and posts data
+        return view('pages.brand-single-profile', compact('brand', 'posts', 'collaborations'));
     }
 
 

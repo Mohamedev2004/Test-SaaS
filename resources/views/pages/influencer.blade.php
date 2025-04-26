@@ -37,7 +37,7 @@
                     </div>
                     <div class="rts__banner__image position-relative">
                         <figure class="banner__image">
-                            <img src="{{ secure_asset('assets/img/home-3/banner/man.png') }}" alt="banner">
+                            <img src="{{ asset('assets/img/home-3/banner/man.png') }}" alt="banner">
                         </figure>
                         <div class="banner__image__shape">
                             <div class="facebook">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="current__job d-flex gap-3">
                             <div class="rts__icon">
-                                <img src="{{ secure_asset('assets/img/icon/job.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/icon/job.svg') }}" alt="">
                             </div>
                             <div class="rts__text">
                                 <span class="h5 mb-0">80+</span>
@@ -74,22 +74,22 @@
             <div class="row align-items-center justify-content-center g-30">
                 <div class="col-lg-5 offset-xl-1 col-xl-5">
                     <div class="rts__workprocess__image">
-                        <img src="{{ secure_asset('assets/img/home-3/about/about-image.webp') }}" alt="">
+                        <img src="{{ asset('assets/img/home-3/about/about-image.webp') }}" alt="">
                         <div class="rts__applicants  wow animated fadeInLeft">
                             <span class="font-20 mb-3 d-block fw-medium">Nouveau Applicants</span>
                             <div class="applicant__list">
 
                                 <div class="single__list">
-                                    <img src="{{ secure_asset('assets/img/author/1.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/author/1.svg') }}" alt="">
                                 </div>
                                 <div class="single__list">
-                                    <img src="{{ secure_asset('assets/img/author/2.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/author/2.svg') }}" alt="">
                                 </div>
                                 <div class="single__list">
-                                    <img src="{{ secure_asset('assets/img/author/3.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/author/3.svg') }}" alt="">
                                 </div>
                                 <div class="single__list">
-                                    <img src="{{ secure_asset('assets/img/author/4.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/author/4.svg') }}" alt="">
                                     <div class="icon-plus"><i class="fa-sharp fa-solid fa-plus"></i></div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                             <div class="single__item d-flex align-items-start flex-sm-nowrap gap-4">
                                 <div class="">
                                     <div class="icon">
-                                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="content">
@@ -119,7 +119,7 @@
                             <div class="single__item d-flex align-items-start flex-sm-nowrap gap-4">
                                 <div class="">
                                     <div class="icon">
-                                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="content">
@@ -130,7 +130,7 @@
                             <!-- <div class="single__item d-flex align-items-start flex-sm-nowrap gap-4">
                                 <div class="">
                                     <div class="icon">
-                                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="content">
@@ -191,7 +191,7 @@
                     <div class="rts__job__card__big d-flex flex-wrap flex-md-nowrap gap-4 align-items-center">
                         <div class="company__icon" style="background: #9c04ff;">
                             <img style="border-radius: 100px; width: 90%; height: 90%;"
-                                src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}"
+                                src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}"
                                 alt="">
                         </div>
                         <div class="d-flex justify-content-between flex-wrap w-100 gap-3 gap-lg-2">

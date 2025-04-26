@@ -1,7 +1,7 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header p-0 mb-5 mt-4">
           <a href="index.html" class="offcanvas-title" id="offcanvasLabel">
-            <img src="{{secure_asset('assets/img/logo/logo.svg')}}" alt="logo">
+            <img src="{{asset('assets/img/logo/logo.svg')}}" alt="logo">
           </a> 
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -9,7 +9,10 @@
          <div class="mb-4 d-block d-sm-none">
           @if (auth()->check() && auth()->user()->isInfluencer())
           <div class="header__right__btn d-flex justify-content-center gap-3">
-            <a href="{{ route('influencer_dashboard') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Profil</a>
+            <a href="{{ route('influencer_dashboard') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs mb-4" aria-label="Job Posting Button">Editer profil</a>
+          </div>
+          <div class="header__right__btn d-flex justify-content-center gap-3">
+            <a href="{{ route('influencer_single_profile_page', ['id' => auth()->user()->id]) }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Profil</a>
           </div>
           <div class="header__right__btn mt-4 d-flex justify-content-center gap-3">
             <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs" href="{{ route('password_update_show_form_influencer') }}">
@@ -20,7 +23,7 @@
 
           @if (auth()->check() && auth()->user()->isBrand())
           <div class="header__right__btn d-flex justify-content-center gap-3">
-            <a href="{{ route('brand_display') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Profil</a>
+            <a href="{{ route('brand_display') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Editer profil</a>
           </div>
           <div class="header__right__btn mt-4 d-flex justify-content-center gap-3">
             <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs" href="{{ route('password_update_show_form_brand') }}">

@@ -48,7 +48,7 @@
                     </div>
                     <div class="rts__banner__image position-relative">
                         <figure class="banner__image">
-                            <img src="{{ secure_asset('assets/img/home-3/banner/woman.png') }}" alt="banner">
+                            <img src="{{ asset('assets/img/home-3/banner/woman.png') }}" alt="banner">
                         </figure>
                         <div class="banner__image__shape">
                             <div class="facebook">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="current__job d-flex gap-3">
                             <div class="rts__icon">
-                                <img src="{{ secure_asset('assets/img/icon/job.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/icon/job.svg') }}" alt="">
                             </div>
                             <div class="rts__text">
                                 <span class="h5 mb-0">80+</span>
@@ -271,7 +271,7 @@
                                 @php
                                     $logo = $brand->logo_image
                                         ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                        : secure_asset('assets/images/influencer-default.jpg');
+                                        : asset('assets/images/influencer-default.jpg');
                                 @endphp
 
                                 <img style="border-radius: 100px;height: 90%;width: 90%;" src="{{ $logo }}"

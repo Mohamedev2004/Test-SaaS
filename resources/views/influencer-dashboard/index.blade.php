@@ -117,7 +117,7 @@
                         <!-- Profile Image Upload -->
                         <div class="info__top">
                             <div class="author__image">
-                                <img src="{{ $influencer && $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" alt="Profile Image">
+                                <img src="{{ $influencer && $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="Profile Image">
                             </div>
                             <button type="button" id="profile-upload-btn" class="upload-btn"><i class="fa-solid fa-upload"></i></button>
                             <input type="file" id="profile_image" name="profile_image" class="file-input" hidden accept="image/*">
@@ -132,6 +132,12 @@
                                 <div class="rt-input-group">
                                     <label for="influencerAge">Âge</label>
                                     <input type="number" id="influencerAge" name="influencerAge" value="{{ old('influencerAge', $influencer ? $influencer->influencerAge : '') }}" placeholder="Âge" required min="13" max="100">
+                                </div>
+                            </div>
+                            <div class="row row-cols-sm-2 row-cols-1 g-3">
+                            <div class="rt-input-group">
+                                    <label for="pseudo">Pseudo</label>
+                                    <input type="text" id="pseudo" name="pseudo" value="{{ old('pseudo', $influencer ? $influencer->pseudo : '') }}" placeholder="Pseudo" required>
                                 </div>
                             </div>
 
@@ -172,20 +178,38 @@
                                     @php
                                         $platforms = ['Instagram', 'TikTok', 'YouTube', 'Twitter', 'Facebook'];
                                         $selectedPlatforms = $influencer ? json_decode($influencer->influencerPlatforms, true) : [];
+                                        $platformIcons = [
+                                            'Instagram' => 'fab fa-instagram', 
+                                            'TikTok' => 'fab fa-tiktok',
+                                            'YouTube' => 'fab fa-youtube',
+                                            'Twitter' => 'fab fa-twitter',
+                                            'Facebook' => 'fab fa-facebook-f'
+                                        ];
                                     @endphp
+
                                     @foreach($platforms as $platform)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="influencerPlatforms[]"
-                                                id="platform-{{ Str::slug($platform) }}"
-                                                value="{{ $platform }}"
-                                                {{ in_array($platform, old('influencerPlatforms', $selectedPlatforms ?: [])) ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="platform-{{ Str::slug($platform) }}">
+                                        <div class="platform-item flex items-center gap-4 mb-4">
+                                            <!-- Icon -->
+                                            <i class="{{ $platformIcons[$platform] }} text-2xl text-[#9C04FF]"></i>
+
+                                            <!-- Platform Name -->
+                                            <span class="font-medium text-[#9C04FF] flex justify-center items-center mt-3 w-32">
                                                 {{ $platform }}
-                                            </label>
+                                            </span>
+
+                                            <!-- URL Input with smaller width -->
+                                            <input 
+                                                type="url" 
+                                                name="platformUrls[{{ Str::slug($platform) }}]" 
+                                                class="form-input w-64 border px-3 py-2 rounded-lg" 
+                                                placeholder="Entrez le lien de votre {{ $platform }}"
+                                                style="width: 350px;"
+                                                value="{{ old('platformUrls.' . Str::slug($platform), isset($selectedPlatforms[Str::slug($platform)]) ? $selectedPlatforms[Str::slug($platform)] : '') }}">
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
+
 
                             <!-- Images Section -->
                             <div class="rt-input-group">

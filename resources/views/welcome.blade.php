@@ -8,10 +8,10 @@
     <section class="rts__banner home__one__banner pt-260">
         <div class="rts__banner__background">
             <div class="shape__home__one __first d-none d-lg-block">
-                <img src="{{ secure_asset('assets/img/home-1/banner/banner-shape.svg') }}" alt="">
+                <img src="{{ asset('assets/img/home-1/banner/banner-shape.svg') }}" alt="">
             </div>
             <div class="shape__home__one __second d-none d-lg-block">
-                <img src="{{ secure_asset('assets/img/home-1/banner/banner-shape-2.svg') }}" alt="">
+                <img src="{{ asset('assets/img/home-1/banner/banner-shape-2.svg') }}" alt="">
             </div>
             <div class="shape__home__one __third">
             </div>
@@ -20,21 +20,24 @@
             <div class="row">
                 <div class="rts__banner__wrapper d-flex gap-4 justify-content-between ">
                     <div class="rts__banner__content">
+                        <p class="text-black mb-4 wow animated fadeInUp" data-wow-delay=".1s" style="font-size: 20px !important;">
+                            La 1ère plate-forme au Maroc qui connecte les marques et influenceurs.
+                        </p>
                         <h1 class="rts__banner__title wow animated fadeInUp ">
                             Licenciez votre <span>Patron</span>, Vivez votre
                             <span>Passion</span>.
                         </h1>
-                        <p class="rts__banner__desc my-40 wow animated fadeInUp" data-wow-delay=".1s">
-                            L'agence Influencer, nos mission vous attendent.
+                        <p class="rts__banner__desc text-black my-40 wow animated fadeInUp" data-wow-delay=".1s">
+                            L'agence Influencer, nos missions vous attendent.
                         </p>
                         <div class="mybuttons">
 
                             @if (auth()->check() && auth()->user()->isInfluencer())
-                                <a href="{{ route('influencer_dashboard') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                                <a href="{{ route('influencer_dashboard') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Editer Profil</a>
                             @endif
 
                             @if (auth()->check() && auth()->user()->isBrand())
-                                <a href="{{ route('brand_display') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Profil</a>
+                                <a href="{{ route('brand_display') }}" class="small__btn d-none d-sm-flex no__fill__btn border-6 font-xs">Editer Profil</a>
                             @endif
 
                             @guest
@@ -45,7 +48,7 @@
                     </div>
                     <div class="rts__banner__image position-relative">
                         <figure class="banner__image">
-                            <img src="{{ secure_asset('assets/img/home-1/banner/image_2x.webp') }}" alt="banner">
+                            <img src="{{ asset('assets/img/home-1/banner/image_2x.webp') }}" alt="banner">
                         </figure>
                         <div class="banner__image__shape">
                             <div class="facebook">
@@ -79,7 +82,7 @@
                 <div class="col-lg-4 col-md-10 wow animated fadeInUp" data-wow-delay=".1s">
                     <div class="rts__workprocess__box">
                         <div class="rts__icon">
-                            <img src="{{ secure_asset('assets/img/home-1/process/icon-1.svg') }}" alt="">
+                            <img src="{{ asset('assets/img/home-1/process/icon-1.svg') }}" alt="">
                         </div>
                         <span class="process__title h6 d-block text-white"> <a class="text-white" href="{{route('register')}}">Créez votre compte</a></span>
                         <p class="text-white">Commencez par créer votre compte en renseignant vos informations.
@@ -90,7 +93,7 @@
                 <div class="col-lg-4 col-md-10 wow animated fadeInUp" data-wow-delay=".2s">
                     <div class="rts__workprocess__box">
                         <div class="rts__icon">
-                            <img src="{{ secure_asset('assets/img/home-1/process/icon-2.svg') }}" alt="">
+                            <img src="{{ asset('assets/img/home-1/process/icon-2.svg') }}" alt="">
                         </div>
                         <span class="process__title h6 d-block text-white"> <a class="text-white" href="{{route('allbrands')}}">Recherchez une Marque</a></span>
                         <p class="text-white">Trouvez les meilleures opportunités de collaboration en quelques clics !
@@ -102,7 +105,7 @@
                 <div class="col-lg-4 col-md-10 wow animated fadeInUp" data-wow-delay=".3s">
                     <div class="rts__workprocess__box rounded-md">
                         <div class="rts__icon">
-                            <img src="{{ secure_asset('assets/img/home-1/process/icon-3.svg') }}" alt="">
+                            <img src="{{ asset('assets/img/home-1/process/icon-3.svg') }}" alt="">
                         </div>
                         <span class="process__title h6 d-block text-white"><a class="text-white" href="{{route('filter_influnecers_auth_brand')}}">Recherchez un influenceur</a></span>
                         <p class="text-white">Trouvez les meilleures opportunités de collaboration en quelques clics !
@@ -114,7 +117,7 @@
                 <div class="col-lg-4 col-md-10 wow animated fadeInUp" data-wow-delay=".3s">
                     <div class="rts__workprocess__box rounded-md">
                         <div class="rts__icon">
-                            <img src="{{ secure_asset('assets/img/home-1/process/icon-3.svg') }}" alt="">
+                            <img src="{{ asset('assets/img/home-1/process/icon-3.svg') }}" alt="">
                         </div>
                         <span class="process__title h6 d-block text-white"><a class="text-white" href="{{route('latests_influencers')}}">Recherchez un influenceur</a></span>
                         <p class="text-white">Trouvez les meilleures opportunités de collaboration en quelques clics !
@@ -171,84 +174,84 @@
                         <div class="swiper-slide" style="display: flex !important; align-items:  !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b1.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b1.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b2.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b2.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b3.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b3.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b4.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b4.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b5.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b5.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b6.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b6.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b7.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b7.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/b8.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/b8.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/a1.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/a1.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/a2.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/a2.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/a3.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/a3.png') }}" alt="">
                             </a>
                             </div>
                         </div>
                         <div class="swiper-slide" style="display: flex !important; align-items: center !important;">
                             <div class="brand__item">
                                 <a href="#" class="brand__item__link" aria-label="brand">
-                                <img src="{{ secure_asset('assets/img/home-1/brand/a4.png') }}" alt="">
+                                <img src="{{ asset('assets/img/home-1/brand/a4.png') }}" alt="">
                             </a>
                             </div>
                         </div>
@@ -337,7 +340,7 @@
                                             <a href="#">${brand.brandSize}</a>
                                             <a href="#">${brand.collaboration_type}</a>
                                             <a style="background-color:var(--rts-primary); color: white;" href="${brand.show_url}">
-                                                Voir Profil
+                                                Voir Editer Profil
                                             </a>
                                         </div>
                                     </div>
@@ -412,7 +415,7 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-5">
                     <div class="rts__image__section">
-                        <img src="{{ secure_asset('assets/img/home-1/we-are/image.webp') }}" alt="">
+                        <img src="{{ asset('assets/img/home-1/we-are/image.webp') }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -479,12 +482,12 @@
                             <div class="swiper-slide">
                                 <div class="rts__single__testimonial text-center">
                                     <div class="rts__quote mb-40">
-                                        <img class="opacity-100" src="{{ secure_asset('assets/img/icon/quote.svg') }}" alt="">
+                                        <img class="opacity-100" src="{{ asset('assets/img/icon/quote.svg') }}" alt="">
                                     </div>
                                     <div class="testimonial__text h6 text-black">Une plateforme innovante pour des collaborations authentiques Cocollab.ma offre une solution unique pour les marques et les influenceurs à la recherche de partenariats authentiques, efficaces et mesurables.</div>
                                     <div class="d-flex align-items-center justify-content-center mx-auto gap-3 pt-40 max-content">
                                         <!-- <div class="author__image">
-                                            <img src="{{ secure_asset('assets/img/home-1/testimonial/author.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/img/home-1/testimonial/author.jpg') }}" alt="">
                                         </div> -->
                                         <div class="author__content text-start">
                                             <span class="h6">LA VIE ECO</span>
@@ -496,12 +499,12 @@
                             <div class="swiper-slide">
                                 <div class="rts__single__testimonial text-center">
                                     <div class="rts__quote mb-40">
-                                        <img class="opacity-100" src="{{ secure_asset('assets/img/icon/quote.svg') }}" alt="">
+                                        <img class="opacity-100" src="{{ asset('assets/img/icon/quote.svg') }}" alt="">
                                     </div>
                                     <div class="testimonial__text h6 text-black">Le paysage du marketing d’influence au Maroc s’apprête à connaître une évolution notable avec le lancement de Cocollab.ma, une plateforme de mise en relation directe entre marques et influenceurs.</div>
                                     <div class="d-flex align-items-center justify-content-center mx-auto gap-3 pt-40 max-content">
                                         <!-- <div class="author__image">
-                                            <img src="{{ secure_asset('assets/img/home-1/testimonial/author.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/img/home-1/testimonial/author.jpg') }}" alt="">
                                         </div> -->
                                         <div class="author__content text-start">
                                             <span class="h6">Maroc Hebdo</span>

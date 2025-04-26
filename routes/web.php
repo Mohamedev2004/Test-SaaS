@@ -172,6 +172,7 @@ Route::group(
 
 
                 Route::get('/', [GuestController::class, 'index'])->name('influencer_welcome');
+                Route::get('/single-profile/{id}', [GuestController::class, 'single_influencer_profile'])->name('influencer_single_profile_page');
                 Route::get('/dashboard', [InfluencerController::class, 'dashboard'])->name('influencer_dashboard');
                 // Route::get('/dash', [InfluencerController::class, 'display'])->name('influencer_display');
                 Route::get('/pack', [GuestController::class, 'pack'])->name('pack_influencer');
@@ -204,6 +205,7 @@ Route::group(
 
                 Route::get('/', [GuestController::class, 'index'])->name('brand_dashboard');
                 Route::get('/profile', [BrandController::class, 'dashboard'])->name('brand_display');
+                Route::get('/single-profile/{id}', [GuestController::class, 'single_brand_profile'])->name('brand_single_profile_page');
                 Route::get('/show/{id}', [GuestController::class, 'show_brand'])->name('show_brand_auth_brand');
                 Route::get('/show/influencer/{id}', [GuestController::class, 'show_influencer'])->name('show_influencer_auth_brand');
                 Route::get('/influencers', [InfluencerController::class, 'latests_influencers'])->name('latests_influencers_auth_brand');
@@ -224,6 +226,14 @@ Route::group(
                 });
             });
         });
+
+        Route::get('/type', function () {
+            return view('forms.type');
+        })->name('type_selection_page');
+
+        Route::get('/register-brand', function () {
+            return view('forms.register-brand');
+        })->name('register-brand');
 
 
 
