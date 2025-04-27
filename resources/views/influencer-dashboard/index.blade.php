@@ -117,7 +117,7 @@
                         <!-- Profile Image Upload -->
                         <div class="info__top">
                             <div class="author__image">
-                                <img src="{{ $influencer && $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" alt="Profile Image">
+                                <img src="{{ $influencer && $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="Profile Image">
                             </div>
                             <button type="button" id="profile-upload-btn" class="upload-btn"><i class="fa-solid fa-upload"></i></button>
                             <input type="file" id="profile_image" name="profile_image" class="file-input" hidden accept="image/*">
@@ -246,7 +246,7 @@
                     <div class="flex flex-row gap-4">
                         <button class="boutton mt-4" type="button">Lier mon compte instagram</button>
                     </div>
-                    
+
 
                     <button class="boutton mt-4" type="submit">{{ $influencer ? 'Mettre à jour' : 'Enregistrer' }}</button>
                 </form>

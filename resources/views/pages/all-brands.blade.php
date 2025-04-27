@@ -19,13 +19,13 @@
                 </div>
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
                     </div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -46,9 +46,12 @@
                     @if (auth()->check() && auth()->user()->isBrand())
                     <form action="{{ route('filter_brands_auth_brand') }}" method="GET" class="d-flex flex-column row-30">
                     @endif
+                    @if (auth()->check() && auth()->user()->isAdmin())
+                    <form action="{{ route('filter_brands_auth_admin') }}" method="GET" class="d-flex flex-column row-30">
+                    @endif
                     @guest
                     <form action="{{ route('allbrands') }}" method="GET" class="d-flex flex-column row-30">
-                    @endguest                        
+                    @endguest
                         <!-- Search by brand name -->
                         <div class="search__item">
                             <label for="search" class="mb-20 font-20 fw-medium text-dark text-capitalize">Rechercher par nom</label>
@@ -125,6 +128,13 @@
                             </a>
 
                             @endif
+                            @if (auth()->check() && auth()->user()->isAdmin())
+
+                            <a href="{{ route('filter_brands_auth_admin', ['reset' => true]) }}" class="rts__btn no__fill__btn max-content mx-auto job__search__btn font-sm">
+                                Réinitialiser
+                            </a>
+
+                            @endif
                             @if (auth()->check() && auth()->user()->isInfluencer())
 
                             <a href="{{ route('filter_brands_auth_influencer', ['reset' => true]) }}" class="rts__btn no__fill__btn max-content mx-auto job__search__btn font-sm">
@@ -170,12 +180,12 @@
                                    <!--  @php
                                         $logo = $brand->logo_image
                                             ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                            : secure_asset('assets/images/influencer-default.jpg');
+                                            : asset('assets/images/influencer-default.jpg');
                                     @endphp -->
 
-                                <img class="rounded-5" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
+                                <img class="rounded-5" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
 
-                                    {{-- <img src="{{ secure_asset('storage/'.$brand->logo_image) }}" class="rounded-5" alt="{{ $brand->brandName }}"> --}}
+                                    {{-- <img src="{{ asset('storage/'.$brand->logo_image) }}" class="rounded-5" alt="{{ $brand->brandName }}"> --}}
                                 </div>
                                 <div class="job__meta w-100 d-flex flex-column gap-3">
                                     <div class="d-flex flex-column align-items-center gap-1">
@@ -185,6 +195,9 @@
                                         @endif
                                         @if (auth()->check() && auth()->user()->isInfluencer())
                                         <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="job__title h6 mb-0">{{ $brand->brandName }}</a>
+                                        @endif
+                                        @if (auth()->check() && auth()->user()->isAdmin())
+                                        <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}" class="job__title h6 mb-0">{{ $brand->brandName }}</a>
                                         @endif
                                         @guest
                                         <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}" class="job__title h6 mb-0">{{ $brand->brandName }}</a>
@@ -213,6 +226,9 @@
                                     @if (auth()->check() && auth()->user()->isInfluencer())
                                     <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="apply__btn max-content">Voir Profil</a>
                                     @endif
+                                    @if (auth()->check() && auth()->user()->isAdmin())
+                                    <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}" class="apply__btn max-content">Voir Profil</a>
+                                    @endif
                                     @guest
                                     <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}" class="apply__btn max-content">Voir Profil</a>
                                     @endguest
@@ -240,11 +256,11 @@
                                         <div class="author__icon">
                                             <!-- @php
                                                 $logo = $brand->logo_image
-                                                    ? secure_asset('storage/' . $brand->logo_image)
-                                                    : secure_asset('assets/images/influencer-default.jpg');
+                                                    ? asset('storage/' . $brand->logo_image)
+                                                    : asset('assets/images/influencer-default.jpg');
                                             @endphp -->
 
-                                        <img class="rounded-10" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
+                                        <img class="rounded-10" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }} ">
                                         </div>
                                         <div class="job__meta">
                                             <div class="d-flex align-items-start flex-column">
@@ -254,6 +270,9 @@
                                                     @endif
                                                     @if (auth()->check() && auth()->user()->isInfluencer())
                                                     <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="job__title mb-0 h6 fw-semibold">{{ $brand->brandName }}</a>
+                                                    @endif
+                                                    @if (auth()->check() && auth()->user()->isAdmin())
+                                                    <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}" class="job__title mb-0 h6 fw-semibold">{{ $brand->brandName }}</a>
                                                     @endif
                                                     @guest
                                                     <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}" class="job__title mb-0 h6 fw-semibold">{{ $brand->brandName }}</a>
@@ -284,6 +303,9 @@
                                         @endif
                                         @if (auth()->check() && auth()->user()->isInfluencer())
                                         <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Voir Profil</a>
+                                        @endif
+                                        @if (auth()->check() && auth()->user()->isAdmin())
+                                        <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Voir Profil</a>
                                         @endif
                                         @guest
                                         <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Voir Profil</a>

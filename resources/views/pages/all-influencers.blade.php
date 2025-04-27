@@ -18,13 +18,13 @@
                 </div>
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
                     </div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -44,6 +44,9 @@
                     @endif
                     @if (auth()->check() && auth()->user()->isBrand())
                     <form action="{{ route('filter_influnecers_auth_brand') }}" method="GET" class="d-flex flex-column row-30">
+                    @endif
+                    @if (auth()->check() && auth()->user()->isAdmin())
+                    <form action="{{ route('filter_influnecers_auth_admin') }}" method="GET" class="d-flex flex-column row-30">
                     @endif
                     @guest
                     <form action="{{ route('allinfluencers') }}" method="GET" class="d-flex flex-column row-30">
@@ -119,6 +122,13 @@
                             </a>
 
                             @endif
+                            @if (auth()->check() && auth()->user()->isAdmin())
+
+                            <a href="{{ route('filter_influnecers_auth_admin', ['reset' => true]) }}" class="rts__btn no__fill__btn max-content mx-auto job__search__btn font-sm">
+                                Réinitialiser
+                            </a>
+
+                            @endif
                             @if (auth()->check() && auth()->user()->isBrand())
 
                             <a href="{{ route('filter_influnecers_auth_brand', ['reset' => true]) }}" class="rts__btn no__fill__btn max-content mx-auto job__search__btn font-sm">
@@ -165,17 +175,20 @@
                                             <!-- @php
                                                 $profileImage = $influencer->image
                                                     ? Storage::disk('do_spaces')->url($influencer->image)
-                                                    : secure_asset('assets/images/influencer-default.jpg');
+                                                    : asset('assets/images/influencer-default.jpg');
                                             @endphp -->
 
                                         <div class="author_icon">
-                                            <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" class="rounded-5" alt="{{ $influencer->name }}">
+                                            <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" class="rounded-5" alt="{{ $influencer->name }}">
                                         </div>
 
                                             <div class="job__meta w-100 d-flex flex-column gap-3">
                                                 <div class="d-flex flex-column align-items-center gap-1">
                                                     <a href="#" class="job__title h6 mb-0">
                                                         @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
+                                                        {{ $influencer->influencerName }}
+                                                        @endif
+                                                        @if (auth()->check() && auth()->user()->isAdmin() )
                                                         {{ $influencer->influencerName }}
                                                         @endif
                                                     </a>
@@ -223,6 +236,11 @@
                                                         Voir Profil
                                                     </a>
                                                     @endif
+                                                    @if (auth()->user()->isAdmin())
+                                                    <a href="{{ route('show_influencer_auth_admin', ['id' => $influencer->id]) }}" class="apply__btn max-content">
+                                                        Voir Profil
+                                                    </a>
+                                                    @endif
                                                     @else
                                                     <a href="{{ route('show_influencer_guest', ['id' => $influencer->id]) }}" class="apply__btn max-content">
                                                         Voir Profil
@@ -255,12 +273,12 @@
                                         <div class="author__icon">
                                             <!-- @php
                                                 $profileImage = $influencer->image
-                                                    ? secure_asset('storage/' . $influencer->image)
-                                                    : secure_asset('assets/images/influencer-default.jpg');
+                                                    ? asset('storage/' . $influencer->image)
+                                                    : asset('assets/images/influencer-default.jpg');
                                             @endphp -->
 
                                         <div class="author_icon">
-                                            <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" class="rounded-10" alt="{{ $influencer->name }}">
+                                            <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" class="rounded-10" alt="{{ $influencer->name }}">
                                         </div>
                                         </div>
                                         <div class="job__meta">
@@ -323,6 +341,11 @@
                                         @endif
                                         @if (auth()->user()->isInfluencer())
                                         <a href="{{ route('show_influencer_auth_influencer', ['id' => $influencer->id]) }}" class="apply__btn max-content">
+                                            Voir Profil
+                                        </a>
+                                        @endif
+                                        @if (auth()->user()->isAdmin())
+                                        <a href="{{ route('show_influencer_auth_admin', ['id' => $influencer->id]) }}" class="apply__btn max-content">
                                             Voir Profil
                                         </a>
                                         @endif

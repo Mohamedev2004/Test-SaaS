@@ -40,12 +40,12 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <title>Cocollab</title>
     <!-- rt icons -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
     <!-- fontawesome -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
     <!-- all plugin css -->
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/plugins.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 
 
@@ -80,15 +80,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ secure_asset('assets/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
     <title>Cocollab</title>
     <!-- rt icons -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/icon/css/rt-icons.css') }}"> -->
     <!-- fontawesome -->
-    <!-- <link rel="stylesheet" href="{{ secure_asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome/fontawesome.min.css') }}"> -->
     <!-- all plugin css -->
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/plugins.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 </head>
 <body>
@@ -104,7 +104,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header p-0 mb-5 mt-4">
           <a href="index.html" class="offcanvas-title" id="offcanvasLabel">
-            <img src="{{ secure_asset('assets/img/logo/logo.svg') }}" alt="logo">
+            <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="logo">
           </a>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -148,13 +148,13 @@
     </div>
     <!-- THEME PRELOADER END -->
     <button type="button" class="rts__back__top" id="rts-back-to-top">
-        <img src="{{ secure_asset('assets/img/icon/arrow.svg') }}" alt="">
+        <img src="{{ asset('assets/img/icon/arrow.svg') }}" alt="">
     </button>
 
 </body>
 
 
-<script src="{{ secure_asset('assets/js/plugins.min.js') }}"></script>
-<script src="{{ secure_asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/plugins.min.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 </html>

@@ -1,8 +1,20 @@
+<style>
+    .drop_down{
+    background: #9c04ff;
+}
+.drop_down:focus {
+    background: #9c04ff;
+    outline: none;
+}
+.drop__width{
+    width: 100%;
+}
+</style>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header p-0 mb-5 mt-4">
           <a href="index.html" class="offcanvas-title" id="offcanvasLabel">
-            <img src="{{secure_asset('assets/img/logo/logo.svg')}}" alt="logo">
-          </a> 
+            <img src="{{asset('assets/img/logo/logo.svg')}}" alt="logo">
+          </a>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <!-- login offcanvas -->
@@ -12,7 +24,7 @@
             <a href="{{ route('influencer_dashboard') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Profil</a>
           </div>
           <div class="header__right__btn mt-4 d-flex justify-content-center gap-3">
-            <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs" href="{{ route('password_update_show_form_influencer') }}">
+            <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs drop__width " href="{{ route('password_update_show_form_influencer') }}">
                 Changer le mot de passe
             </a>
           </div>
@@ -23,7 +35,7 @@
             <a href="{{ route('brand_display') }}" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Job Posting Button">Profil</a>
           </div>
           <div class="header__right__btn mt-4 d-flex justify-content-center gap-3">
-            <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs" href="{{ route('password_update_show_form_brand') }}">
+            <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs drop__width" href="{{ route('password_update_show_form_brand') }}">
                 Changer le mot de passe
             </a>
           </div>
@@ -36,10 +48,34 @@
           @endguest
          </div>
          @auth
-          <div class="header__right__btn d-flex justify-content-center gap-3 mb-4">
+          <div class="header__right__btn d-flex justify-content-center gap-3 mb-4"  style="    display: flex
+          ;
+              flex-direction: column;
+              align-items: stretch;">
+            @if (auth()->check() && auth()->user()->isAdmin())
+
+            <div class="dropdown-center">
+                <button class="btn btn-secondary dropdown-toggle drop_down drop__width" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  naviguer
+                </button>
+                <ul class="dropdown-menu" style="padding: 0px">
+
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn  font-xs drop__width" href="{{ route('welcome_admin') }}">Acceuil</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('admindashboard') }}">dashboard</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('users.create') }}">Ajouter un utilisateur</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('latests_influencers_auth_admin') }}">Influenceurs</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('latests_brands_auth_admin') }}">Marques</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('filter_influnecers_auth_admin') }}">Tous les influenceurs</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('filter_brands_auth_admin') }}">Toutes les marques</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('relation_admin') }}">Relations Presse</a></li>
+                    <li class="li_dropdown"><a class="dropdown-item small__btn d-sm-flex d-xl-flex fill__btn font-xs drop__width" href="{{ route('terms-conditions_admin') }}">Termes & Conditions</a></li>
+
+                </ul>
+              </div>
+            @endif
               <form method="POST" action="{{ route('logout') }}">
                   @csrf
-                  <button type="submit" class="small__btn d-xl-flex fill__btn border-6 font-xs" aria-label="Logout Button">
+                  <button type="submit" class="small__btn d-xl-flex fill__btn border-6 font-xs drop__width" aria-label="Logout Button">
                       Se Déconnecter
                   </button>
               </form>
@@ -47,8 +83,11 @@
          @endauth
 
          @if (auth()->check() && auth()->user()->isAdmin())
-         <div class="header__right__btn d-flex justify-content-center gap-3 mb-4">
-           <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs" href="{{ route('users.create') }}">Ajouter un utilisateur</a>
+         <div class="header__right__btn d-flex justify-content-center gap-3 mb-4" style="    display: flex
+;
+    flex-direction: column;
+    align-items: stretch;">
+           {{-- <a class="small__btn d-sm-flex d-xl-flex fill__btn border-6 font-xs drop__width" href="{{ route('users.create') }}">Ajouter un utilisateur</a> --}}
          </div>
          @endif
         <div class="offcanvas-body p-0">

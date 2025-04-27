@@ -111,6 +111,27 @@
 
                                 <!-- Buttons Section -->
                                 <div class="flex items-center space-x-2">
+                                    @php
+                                    // Accessing the related brand data from the brand table
+                                    $relatedBrand = $brand->brand;
+
+                                    // Check if any field is empty (OR condition) from the brand table (excluding logo_image)
+                                    $isComplete = !empty($relatedBrand->brandName) &&
+                                                  !empty($relatedBrand->brandDescription) &&
+                                                  !empty($relatedBrand->brandSize) &&
+                                                  !empty($relatedBrand->brandLocalisation) &&
+                                                  !empty($relatedBrand->pack_id) &&
+                                                  !empty($relatedBrand->sector_id);
+                                @endphp
+
+                                <!-- If the brand data is complete (excluding logo_image), show the "Modifier" button -->
+                                @if ($isComplete)
+                                    <a href="{{ route('show_brand_auth_admin', $relatedBrand->id) }}" class="action__item">
+                                        <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
+                                            voir
+                                        </button>
+                                    </a>
+                                @endif
                                     <a href="{{ route('brandstatus', $brand->id) }}" class="action__item">
                                         <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
                                             Modifier

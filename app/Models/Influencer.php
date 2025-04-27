@@ -40,4 +40,6 @@ class Influencer extends Model
 {
     return $this->hasMany(Post::class, 'user_id', 'user_id');
 }
+
+
 }

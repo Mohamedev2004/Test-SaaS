@@ -31,7 +31,7 @@
                         <div class="d-flex gap-4 align-items-center flex-md-row flex-column mx-auto mx-md-0">
                             <div class="company__icon rounded-2 bg-transparent">
                                 <!-- Display brand logo -->
-                                <img style="width:100%; height:100%;border-radius:100px; border: white 4px solid" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
+                                <img style="width:100%; height:100%;border-radius:100px; border: white 4px solid" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
                             </div>
                             <div class="job__meta w-100 d-flex text-center text-md-start flex-column gap-2">
                                 <div class="">
@@ -67,10 +67,10 @@
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common"></div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                                     @foreach (json_decode($post->images, true) as $image)
                                         <div class="col-md-4 mb-3"> <!-- Responsive et espace entre images -->
                                             <div class="card h-100"> <!-- Carte de hauteur égale -->
-                                                <img class="card-img-top rounded-2" src="{{ secure_asset('storage/' . $image) }}" alt="Image du post">
+                                                <img class="card-img-top rounded-2" src="{{ asset('storage/' . $image) }}" alt="Image du post">
                                                 <div class="card-body">
                                                     <p class="card-text text-muted small">Posté le {{ $post->created_at->format('d/m/Y') }}</p>
                                                 </div>
@@ -204,7 +204,7 @@
             <div class="col-lg-4 d-flex flex-column gap-40">
                 <div class="company__card">
                     <div style="margin:auto;width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid white;">
-                        <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : secure_asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
+                        <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $brand->logo_image ? Storage::disk('do_spaces')->url($brand->logo_image) : asset('assets/images/brand-default.jpg') }}" alt="{{ $brand->brandName }}">
                     </div>
                     <h5 class="company__name mt-20">{{ $brand->brandName }}</h5>
                     <a href="#contact" class="rts__btn apply__btn mt-40">Contacter</a>
@@ -313,7 +313,7 @@
                                     @php
                                     $logo = $brand->logo_image
                                         ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                        : secure_asset('assets/images/influencer-default.jpg');
+                                        : asset('assets/images/influencer-default.jpg');
                                 @endphp
 
                                 <img src="{{ $logo }}" class="rounded-1" alt="{{ $brand->brandName }}">
@@ -321,6 +321,9 @@
                                 </div>
                                 @if (auth()->check() && auth()->user()->isBrand())
                                 <a href="{{ route('show_brand_auth_brand', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
+                                @endif
+                                @if (auth()->check() && auth()->user()->isAdmin())
+                                <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
                                 @endif
                                 @if (auth()->check() && auth()->user()->isInfluencer())
                                 <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>

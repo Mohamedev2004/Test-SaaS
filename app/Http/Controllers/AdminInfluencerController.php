@@ -12,7 +12,7 @@ class AdminInfluencerController extends Controller
     // Display the list of influencers
     public function index()
     {
-        $influencers = User::where('role', 'influencer')->get(); // Fetch users with 'influencer' role
+        $influencers = User::where('role', 'influencer')->with('influencer')->get(); // Fetch users with 'influencer' role
         $total = $influencers->count();
 
         $activeInfluencers = $influencers->filter(fn($influencer) => $influencer->status === 'Active');
@@ -28,6 +28,7 @@ class AdminInfluencerController extends Controller
     {
         $influencers = User::where('role', 'influencer')
                    ->where('created_at', '>=', Carbon::now()->subDays(2))
+                   ->with('influencer')
                    ->get();
         $total = $influencers->count();
 

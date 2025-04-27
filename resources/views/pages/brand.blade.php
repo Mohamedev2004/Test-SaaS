@@ -48,7 +48,7 @@
                     </div>
                     <div class="rts__banner__image position-relative">
                         <figure class="banner__image">
-                            <img src="{{ secure_asset('assets/img/home-3/banner/woman.png') }}" alt="banner">
+                            <img src="{{ asset('assets/img/home-3/banner/woman.png') }}" alt="banner">
                         </figure>
                         <div class="banner__image__shape">
                             <div class="facebook">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="current__job d-flex gap-3">
                             <div class="rts__icon">
-                                <img src="{{ secure_asset('assets/img/icon/job.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/icon/job.svg') }}" alt="">
                             </div>
                             <div class="rts__text">
                                 <span class="h5 mb-0">80+</span>
@@ -107,7 +107,7 @@
                                 @if (auth()->check() && auth()->user()->isBrand())
                                 <div class="rts__pricing__box"
                                     style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 12px; flex: 1 1 300px; box-sizing: border-box; background: white;">
-                                    
+
                                     <!-- Pack Name -->
                                     <div class="plan__price lh-1 mb-40">
                                         <span style="font-size: 30px !important; font-weight:bold !important;" class="text-xl text-black">{{ $data->name }}</span>
@@ -140,7 +140,7 @@
                                 @if (auth()->check() && auth()->user()->isInfluencer())
                                 <div class="rts__pricing__box"
                                     style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 12px; flex: 1 1 300px; box-sizing: border-box; background: white;">
-                                    
+
                                     <!-- Pack Name -->
                                     <div class="plan__price lh-1 mb-40">
                                         <span style="font-size: 30px !important; font-weight:bold !important;" class="text-xl text-black">{{ $data->name }}</span>
@@ -173,7 +173,7 @@
                                 @guest
                                 <div class="rts__pricing__box"
                                     style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 10px; min-height: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 12px; flex: 1 1 300px; box-sizing: border-box; background: white;">
-                                    
+
                                     <!-- Pack Name -->
                                     <div class="plan__price lh-1 mb-40">
                                         <span style="font-size: 30px !important; font-weight:bold !important;" class="text-xl text-black">{{ $data->name }}</span>
@@ -242,6 +242,11 @@
                             class="text-white d-flex gap-2 align-items-center"
                             style="font-size: 20px; font-weight: bolder; text-decoration:underline">Voir Tout</a>
                     @endif
+                    @if (auth()->check() && auth()->user()->isAdmin())
+                    <a href="{{ route('filter_brands_auth_admin') }}"
+                        class="text-white d-flex gap-2 align-items-center"
+                        style="font-size: 20px; font-weight: bolder; text-decoration:underline">Voir Tout</a>
+                @endif
                     @guest
                         <a href="{{ route('allbrands') }}" class="text-white d-flex gap-2 align-items-center"
                             style="font-size: 20px; font-weight: bolder; text-decoration:underline">Voir Tout</a>
@@ -271,7 +276,7 @@
                                 @php
                                     $logo = $brand->logo_image
                                         ? Storage::disk('do_spaces')->url($brand->logo_image)
-                                        : secure_asset('assets/images/influencer-default.jpg');
+                                        : asset('assets/images/influencer-default.jpg');
                                 @endphp
 
                                 <img style="border-radius: 100px;height: 90%;width: 90%;" src="{{ $logo }}"
@@ -307,6 +312,9 @@
                                             @elseif (auth()->check() && auth()->user()->isInfluencer())
                                                 <a href="{{ route('show_brand_auth_influencer', ['id' => $brand->id]) }}">Voir
                                                     Profil</a>
+                                            @elseif (auth()->check() && auth()->user()->isAdmin())
+                                            <a href="{{ route('show_brand_auth_admin', ['id' => $brand->id]) }}">Voir
+                                                Profil</a>
                                             @else
                                                 <a href="{{ route('show_brand_guest', ['id' => $brand->id]) }}">Voir
                                                     Profil</a>

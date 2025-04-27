@@ -29,7 +29,8 @@ class InfluencerFactory extends Factory
             'influencerDescription' => $this->faker->paragraph(3),
             'influencerAge' => $this->faker->numberBetween(18, 45),
             'sexe' => $genderDisplay,
-            'influencerPlatforms' => $this->getRandomPlatforms(),
+            'influencerPlatforms' => json_encode($this->getRandomPlatforms()), // Store platforms as JSON
+            'sector_id' => Sector::factory(),
         ];
     }
 
@@ -81,7 +82,7 @@ class InfluencerFactory extends Factory
 
             return 'profile_images/' . $filename;
         } catch (\Exception $e) {
-            return 'profile_images/default.jpg';
+            return 'profile_images/default.jpg'; // Default image in case of error
         }
     }
 

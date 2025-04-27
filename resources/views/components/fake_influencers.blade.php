@@ -1,6 +1,6 @@
 <div class="rts__job__card__big d-flex flex-wrap flex-md-nowrap gap-4 align-items-center">
     <div class="company__icon" style="background: #9c04ff;">
-        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ secure_asset('assets/images/Nabil.jpg') }}" alt="">
+        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ asset('assets/images/Nabil.jpg') }}" alt="">
     </div>
     <div class="d-flex justify-content-between flex-wrap w-100 gap-3 gap-lg-2">
         <div class="job__meta">
@@ -26,7 +26,7 @@
 
 <div class="rts__job__card__big d-flex flex-wrap flex-md-nowrap gap-4 align-items-center">
     <div class="company__icon" style="background: #9c04ff;">
-        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ secure_asset('assets/images/Ilyas.jpg') }}" alt="">
+        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ asset('assets/images/Ilyas.jpg') }}" alt="">
     </div>
     <div class="d-flex justify-content-between flex-wrap w-100 gap-3 gap-lg-2">
         <div class="job__meta">
@@ -54,7 +54,7 @@
 
 <div class="rts__job__card__big d-flex flex-wrap flex-md-nowrap gap-4 align-items-center">
     <div class="company__icon" style="background: #9c04ff;">
-        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ secure_asset('assets/images/yassmine.jpg') }}" alt="">
+        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ asset('assets/images/yassmine.jpg') }}" alt="">
     </div>
     <div class="d-flex justify-content-between flex-wrap w-100 gap-3 gap-lg-2">
         <div class="job__meta">
@@ -82,7 +82,7 @@
 
 <div class="rts__job__card__big d-flex flex-wrap flex-md-nowrap gap-4 align-items-center">
     <div class="company__icon" style="background: #9c04ff;">
-        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ secure_asset('assets/images/Rania.jpg') }}" alt="">
+        <img style="border-radius: 100px; width: 90%; height: 90%;" src="{{ asset('assets/images/Rania.jpg') }}" alt="">
     </div>
     <div class="d-flex justify-content-between flex-wrap w-100 gap-3 gap-lg-2">
         <div class="job__meta">

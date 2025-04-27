@@ -44,17 +44,21 @@ class GuestController extends Controller
                     return [
                         'logo_image' => $brand->logo_image
                             ? Storage::disk('do_spaces')->url($brand->logo_image)
-                            : secure_asset('assets/images/influencer-default.jpg'),
+                            : asset('assets/images/influencer-default.jpg'),
                         'brandName' => $brand->brandName,
                         'brandLocalisation' => $brand->brandLocalisation,
                         'sector_name' => $brand->sector->name,
-                        'show_url' => $isAuthenticated
-                            ? ($user->isBrand()
-                                ? route('show_brand_auth_brand', $brand->id)
-                                : ($user->isInfluencer()
-                                    ? route('show_brand_auth_influencer', $brand->id)
-                                    : route('show_brand_guest', $brand->id)))
-                            : route('show_brand_guest', $brand->id), // Fallback to guest route if not authenticated
+'show_url' => $isAuthenticated
+    ? ($user->isBrand()
+        ? route('show_brand_auth_brand', $brand->id)
+        : ($user->isInfluencer()
+            ? route('show_brand_auth_influencer', $brand->id)
+            : ($user->isAdmin()
+                ? route('show_brand_auth_admin', $brand->id) // 👈 use your new route for Admin
+                : route('show_brand_guest', $brand->id)))
+    )
+    : route('show_brand_guest', $brand->id), // Fallback to guest route if not authenticated
+
                         'brandDescription' => $brand->brandDescription,
                         'brandSize' => $brand->brandSize,
                         'collaboration_type' => $brand->collaboration->name,
@@ -242,12 +246,12 @@ class GuestController extends Controller
 
     public function terms()
     {
-        return view('terms-conditions'); 
+        return view('terms-conditions');
     }
 
     public function press()
     {
-        return view('relation-press'); 
+        return view('relation-press');
     }
 
 }

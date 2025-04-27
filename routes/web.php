@@ -81,13 +81,22 @@ Route::group(
                 Route::get('/Demande-Demo', [GuestController::class, 'demoRequest'])->name('demo.request');
                 Route::post('/meetings', [GuestController::class, 'meeting_store'])->name('meetings.store');
 
-                
+
             });
         });
 
         // Admin routes
         Route::prefix('/admin')->middleware(['auth', 'admin'])->group(function () {
 
+            Route::get('/', [GuestController::class, 'index'])->name('welcome_admin');
+            Route::get('/show/influencer/{id}', [GuestController::class, 'show_influencer'])->name('show_influencer_auth_admin');
+            Route::get('/show/brand/{id}', [GuestController::class, 'show_brand'])->name('show_brand_auth_admin');
+            Route::get('influencers', [InfluencerController::class, 'latests_influencers'])->name('latests_influencers_auth_admin');
+            Route::get('/All-Influencers', [InfluencerController::class, 'filter'])->name('filter_influnecers_auth_admin');
+            Route::get('/All-Brands', [BrandController::class, 'filter'])->name('filter_brands_auth_admin');
+            Route::get('/brands', [BrandController::class, 'latests_brands'])->name('latests_brands_auth_admin');
+            Route::get('/Press', [GuestController::class, 'press'])->name('relation_admin');
+            Route::get('/terms-and-conditions', [GuestController::class, 'terms'])->name('terms-conditions_admin');
 
             Route::post('/brandpack/renew/{brand}', [AdminBrandController::class, 'renewPack'])->name('brandpack.renew');
             Route::get('/brandpack', [AdminBrandController::class, 'packShow'])->name('brandpack.show');
@@ -156,7 +165,7 @@ Route::group(
             Route::get('/Dashboard/Features/Add', [FeatureController::class, 'create'])->name('featureadd'); // Show add feature form
             Route::get('/Dashboard/Features/Edit/{id}', [FeatureController::class, 'edit'])->name('featureedit'); // Show edit feature form
             Route::put('/Dashboard/Features/Update/{id}', [FeatureController::class, 'update'])->name('featureupdate'); // Update feature
-    
+
 
             Route::fallback(function () {
                 return redirect()->route('admindashboard');
@@ -168,7 +177,7 @@ Route::group(
         // Influencer routes
         Route::middleware('countdown')->group(function () {
             Route::prefix('/influencer')->middleware(['auth', 'checkemailverification', 'influencer', 'checkpasswordchange'])->group(function () {
-                
+
 
 
                 Route::get('/', [GuestController::class, 'index'])->name('influencer_welcome');

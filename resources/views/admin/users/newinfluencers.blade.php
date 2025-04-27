@@ -74,6 +74,7 @@
                                             Modifier
                                         </button>
                                     </a>
+
                                     <form action="{{ route('influencers.destroy', $influencer->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -81,6 +82,7 @@
                                             Supprimer
                                         </button>
                                     </form>
+
                                 </div>
                             </div>
                         @endforeach
@@ -92,40 +94,66 @@
                     @if($activeInfluencers->isEmpty())
                         <p class="text-center text-gray-500 py-4">Aucun influenceur actif.</p>
                     @else
-                        @foreach($activeInfluencers as $influencer)
-                            <div class="single__shortlist__item flex items-start space-x-6 p-4 border-b border-gray-200">
-                                <!-- Information Section -->
-                                <div class="author__info flex-1">
-                                    <div class="author__meta">
-                                        <div class="author__name max-w-xs">
-                                            <h6 class="fw-semibold text-lg font-semibold text-gray-800">{{ $influencer->name }}</h6>
-                                            <p class="text-sm text-gray-500">{{ $influencer->email }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="author__info__list mt-2 text-sm text-gray-600">
-                                        <span>Phone: {{ $influencer->phone }}</span><br>
-                                        <span>Statut: {{ $influencer->status }}</span>
-                                        <span>Inscrit le: {{ $influencer->created_at }}</span>
-                                    </div>
-                                </div>
-
-                                <!-- Buttons Section -->
-                                <div class="flex items-center space-x-2">
-                                    <a href="{{ route('influencerstatus', $influencer->id) }}" class="action__item">
-                                        <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
-                                            Modifier
-                                        </button>
-                                    </a>
-                                    <form action="{{ route('influencers.destroy', $influencer->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-all ease-in-out duration-200 w-full">
-                                            Supprimer
-                                        </button>
-                                    </form>
+                    @foreach($activeInfluencers as $influencer)
+                    <div class="single__shortlist__item flex items-start space-x-6 p-4 border-b border-gray-200">
+                        <!-- Information Section -->
+                        <div class="author__info flex-1">
+                            <div class="author__meta">
+                                <div class="author__name max-w-xs">
+                                    <h6 class="fw-semibold text-lg font-semibold text-gray-800">{{ $influencer->name }}</h6>
+                                    <p class="text-sm text-gray-500">{{ $influencer->email }}</p>
                                 </div>
                             </div>
-                        @endforeach
+                            <div class="author__info__list mt-2 text-sm text-gray-600">
+                                <span>Phone: {{ $influencer->phone }}</span><br>
+                                <span>Statut: {{ $influencer->status }}</span>
+                                <span>Inscrit le: {{ $influencer->created_at }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Buttons Section -->
+                        <div class="flex items-center space-x-2">
+                            @php
+                                // Accessing the related influencer data from the influencer table
+                                $relatedInfluencer = $influencer->influencer;
+
+                                // Check if any field is empty (OR condition) from the influencer table
+                                $isComplete = !empty($relatedInfluencer->influencerName) &&
+                                              !empty($relatedInfluencer->influencerDescription) &&
+                                              !empty($relatedInfluencer->influencerAge) &&
+                                              !empty($relatedInfluencer->sexe) &&
+                                              !empty($relatedInfluencer->sector_id);
+                            @endphp
+
+                            <!-- If the influencer data is complete, show the button -->
+                            @if ($isComplete)
+                                <a href="{{ route('show_influencer_auth_admin', $relatedInfluencer->id) }}" class="action__item">
+                                    <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
+                                        voir
+                                    </button>
+                                </a>
+                            @endif
+
+                            <!-- Modify Button (No changes in the route) -->
+                            <a href="{{ route('influencerstatus', $influencer->id) }}" class="action__item">
+                                <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
+                                    Modifier
+                                </button>
+                            </a>
+
+                            <!-- Delete Form (No changes in the route) -->
+                            <form action="{{ route('influencers.destroy', $influencer->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-all ease-in-out duration-200 w-full">
+                                    Supprimer
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+
+
                     @endif
                 </div>
 

@@ -7,7 +7,7 @@
                     @if (auth()->check() && auth()->user()->isBrand())
                     <div class="rts__logo">
                         <a href="{{route('brand_dashboard')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">
@@ -49,7 +49,7 @@
                     @if (auth()->check() && auth()->user()->isInfluencer())
                     <div class="rts__logo">
                         <a href="{{route('influencer_welcome')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">
@@ -92,7 +92,7 @@
                     @guest
                     <div class="rts__logo">
                         <a href="{{route('welcome')}}">
-                        <img class="logo__image" src="{{ secure_asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
+                        <img class="logo__image" src="{{ asset('assets/img/logo/logo.svg') }}" width="250" alt="logo">
                     </a>
                     </div>
                     <div class="rts__menu d-flex gap-5 gap-lg-4 gap-xl-5 align-items-center">
@@ -111,7 +111,7 @@
                                     </li>
 
                                     <li class="space">
-                                        <a href="{{route('latests_brands')}}" class="navigation__menu--item__link">Marques 
+                                        <a href="{{route('latests_brands')}}" class="navigation__menu--item__link">Marques
                                         </a>
 
                                     </li>

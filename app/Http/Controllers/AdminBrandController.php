@@ -15,8 +15,8 @@ class AdminBrandController extends Controller
     // Function to fetch all brands
     public function index()
     {
-        $brands = User::where('role', 'brand')->get();
-        $activeBrands = User::where('role', 'brand')->where('status', 'Active')->get();
+        $brands = User::where('role', 'brand')->with('brand')->get();
+        $activeBrands = User::where('role', 'brand')->where('status', 'Active')->with('brand')->get();
         $inactiveBrands = User::where('role', 'brand')->where('status', 'Inactive')->get();
 
         $total = $brands->count();
@@ -30,6 +30,7 @@ class AdminBrandController extends Controller
     {
         $brands = User::where('role', 'brand')
             ->where('created_at', '>=', Carbon::now()->subDays(2))
+            ->with('brand')
             ->get();
         $total = $brands->count();
 

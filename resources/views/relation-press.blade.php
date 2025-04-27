@@ -11,7 +11,7 @@
             <div class="rts__banner__wrapper d-flex flex-wrap flex-lg-nowrap gap-5  align-items-center">
                 <div class="rts__banner__content max-750">
                     <h1 class="rts__banner__title wow animated fadeInUp ">
-                        L’art d’inspirer les médias  
+                        L’art d’inspirer les médias
                     </h1>
                     <p class="rts__banner__desc my-40 br-lg-none  wow animated fadeInUp">
                         Stratégie ciblée, storytelling percutant et réseau média clé en main : nous lions votre marque aux bons interlocuteurs pour une influence presse qui compte.
@@ -19,7 +19,7 @@
                 </div>
                 <div class="rts__banner__image position-relative">
                     <figure class="banner__image">
-                        <img src="{{ secure_asset('assets/img/home-3/banner/woman1.png') }}" alt="banner">
+                        <img src="{{ asset('assets/img/home-3/banner/woman1.png') }}" alt="banner">
                     </figure>
                     <div class="banner__image__shape">
                         <div class="facebook">
@@ -56,7 +56,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 d-flex bg-purple-600">
                 <div class="rts__workprocess__box w-100 d-flex flex-column " style="min-height: 360px; padding: 30px; border-radius: 12px; background-color: #55008C;">
                     <div class="rts__icon mb-3">
-                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                     </div>
                     <div>
                         <span class="process__title h6 d-block text-white mb-2">Accès à un réseau médiatique qualifié</span>
@@ -68,7 +68,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 d-flex">
                 <div class="rts__workprocess__box w-100 d-flex flex-column " style="min-height: 360px; padding: 30px; border-radius: 12px; background-color: #55008C;">
                     <div class="rts__icon mb-3">
-                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                     </div>
                     <div>
                         <span class="process__title h6 d-block text-white mb-2">Stratégies sur-mesure</span>
@@ -80,7 +80,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 d-flex">
                 <div class="rts__workprocess__box w-100 d-flex flex-column " style="min-height: 360px; padding: 30px; border-radius: 12px; background-color: #55008C;">
                     <div class="rts__icon mb-3">
-                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                     </div>
                     <div>
                         <span class="process__title h6 d-block text-white mb-2">Authenticité & crédibilité</span>
@@ -92,7 +92,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4 d-flex">
                 <div class="rts__workprocess__box w-100 d-flex flex-column" style="min-height: 360px; padding: 30px; border-radius: 12px; background-color: #55008C;">
                     <div class="rts__icon mb-3">
-                        <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                     </div>
                     <div>
                         <span class="process__title h6 d-block text-white mb-2">Suivi mesurable</span>
@@ -116,13 +116,13 @@
                 </div>
                 <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                     <div class="shape__one common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-1.svg') }}" alt="">
                     </div>
                     <div class="shape__two common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                     </div>
                     <div class="shape__three common">
-                        <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                        <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@
         <div class="row align-items-center justify-content-center g-30">
             <div class="col-lg-5 offset-xl-1 col-xl-5">
                 <div class="rts__workprocess__image">
-                    <img src="{{ secure_asset('assets/img/home-3/about/about-image.png') }}" alt="">
+                    <img src="{{ asset('assets/img/home-3/about/about-image.png') }}" alt="">
                 </div>
             </div>
             <div class="col-lg-7 col-xl-6">
@@ -145,11 +145,11 @@
                         <h3 class="rts__section__title mb-3">Comment ça marche ?</h3>
                     </div>
                     <div class="single__feature__list">
-                        
+
                         <div class="single__item d-flex align-items-start flex-wrap flex-sm-nowrap gap-4">
                             <div class="">
                                 <div class="icon">
-                                    <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                 </div>
                             </div>
                             <div class="content">
@@ -159,7 +159,7 @@
                         <div class="single__item d-flex align-items-start flex-wrap flex-sm-nowrap gap-4">
                             <div class="">
                                 <div class="icon">
-                                    <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                 </div>
                             </div>
                             <div class="content">
@@ -169,7 +169,7 @@
                         <div class="single__item d-flex align-items-start flex-wrap flex-sm-nowrap gap-4">
                             <div class="">
                                 <div class="icon">
-                                    <img src="{{ secure_asset('assets/img/icon/check.svg') }}" alt="">
+                                    <img src="{{ asset('assets/img/icon/check.svg') }}" alt="">
                                 </div>
                             </div>
                             <div class="content">

@@ -109,6 +109,27 @@
 
                                 <!-- Buttons Section -->
                                 <div class="flex items-center space-x-2">
+
+                                    @php
+                                    // Accessing the related influencer data from the influencer table
+                                    $relatedInfluencer = $influencer->influencer;
+
+                                    // Check if any field is empty (OR condition) from the influencer table
+                                    $isComplete = !empty($relatedInfluencer->influencerName) &&
+                                                  !empty($relatedInfluencer->influencerDescription) &&
+                                                  !empty($relatedInfluencer->influencerAge) &&
+                                                  !empty($relatedInfluencer->sexe) &&
+                                                  !empty($relatedInfluencer->sector_id);
+                                @endphp
+
+                                <!-- If the influencer data is complete, show the button -->
+                                @if ($isComplete)
+                                    <a href="{{ route('show_influencer_auth_admin', $relatedInfluencer->id) }}" class="action__item">
+                                        <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
+                                            voir
+                                        </button>
+                                    </a>
+                                @endif
                                     <a href="{{ route('influencerstatus', $influencer->id) }}" class="action__item">
                                         <button class="bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-all ease-in-out duration-200 w-full">
                                             Modifier

@@ -36,10 +36,10 @@
                                         <!-- Display brand logo -->
                                             <!-- @php
                                                 $profileImage = $influencer->image
-                                                    ? secure_asset('storage/' . $influencer->image)
-                                                    : secure_asset('assets/images/influencer-default.jpg');
+                                                    ? asset('storage/' . $influencer->image)
+                                                    : asset('assets/images/influencer-default.jpg');
                                             @endphp -->
-                                        <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}"
+                                        <img src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}"
                                             alt="" style="width: 100% ; height: 100%; border-radius:100px; border: white 4px solid">
                                     </div>
                                     <div class="job__meta w-100 d-flex text-center text-md-start flex-column gap-2">
@@ -48,7 +48,13 @@
                                             <h3 class="job__title h3 mb-0 text-white">
                                                 @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
                                                 {{ $influencer->influencerName }}
-                                                @endif</h3>
+
+                                                @endif
+                                                @if (auth()->check() && auth()->user()->isAdmin() )
+                                                {{ $influencer->influencerName }}
+
+                                                @endif
+                                            </h3>
                                         </div>
                                         <div
                                             class="d-flex gap-3 justify-content-center justify-content-md-start flex-wrap mb-3 mt-2">
@@ -101,10 +107,10 @@
                         <div class="breadcrumb__area__shape d-flex gap-4 justify-content-end align-items-center">
                             <div class="shape__one common"></div>
                             <div class="shape__two common">
-                                <img src="{{ secure_asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/breadcrumb/shape-2.svg') }}" alt="">
                             </div>
                             <div class="shape__three common">
-                                <img src="{{ secure_asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
+                                <img src="{{ asset('assets/img/breadcrumb/shape-3.svg') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -212,15 +218,19 @@
                             <div style="margin:auto;width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid white;">
                                 <!-- @php
                                     $profileImage = $influencer->image
-                                    ? secure_asset('storage/' . $influencer->image)
-                                    : secure_asset('assets/images/influencer-default.jpg');
+                                    ? asset('storage/' . $influencer->image)
+                                    : asset('assets/images/influencer-default.jpg');
                                 @endphp -->
-                                <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" alt="">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="">
                             </div>
                             <h5 class="company__name mt-20">
                                 @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
                                 {{ $influencer->influencerName }}
-                                @endif</h5>
+                                @endif
+                                @if (auth()->check() && auth()->user()->isAdmin())
+                                {{ $influencer->influencerName }}
+                                @endif
+                            </h5>
                             <a href="#contact" class="rts__btn apply__btn mt-40">Contacter</a>
                         </div>
 
@@ -229,7 +239,11 @@
                             <h6 class="fw-semibold mb-20">Contacter
                                 @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
                                 {{ $influencer->influencerName }}
-                                @endif</h6>
+                                @endif
+                                @if (auth()->check() && auth()->user()->isAdmin())
+                                {{ $influencer->influencerName }}
+                                @endif
+                            </h6>
                             @auth
                                 @if (auth()->user()->isBrand() && auth()->user()->status === 'Active')
                                     <form action="{{ route('contact.brand.store') }}" method="POST"
@@ -324,11 +338,14 @@
                                 <div class="rts__job__card style__five">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="company__icon bg-transparent">
-                                            <img style="border-radius:8px" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : secure_asset('assets/images/influencer-default.jpg') }}" alt="">
+                                            <img style="border-radius:8px" src="{{ $influencer->profile_image ? Storage::disk('do_spaces')->url($influencer->profile_image) : asset('assets/images/influencer-default.jpg') }}" alt="">
 
                                         </div>
                                         @if (auth()->check() && auth()->user()->isBrand())
                                         <a href="{{ route('show_influencer_auth_brand', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
+                                        @endif
+                                        @if (auth()->check() && auth()->user()->isAdmin())
+                                        <a href="{{ route('show_influencer_auth_admin', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
                                         @endif
                                         @if (auth()->check() && auth()->user()->isInfluencer())
                                         <a href="{{ route('show_influencer_auth_influencer', ['id' => $influencer->id]) }}" class="apply__btn" aria-label="View Profile">Profil</a>
@@ -345,6 +362,9 @@
                                     <div class="font-20 fw-medium job__title mt-3 mb-2">
                                         <a href="#" aria-label="job" class="job__title">
                                             @if (auth()->check() && auth()->user()->isBrand() && auth()->user()->status === 'Active')
+                                            {{ $influencer->influencerName }}
+                                            @endif
+                                            @if (auth()->check() && auth()->user()->isAdmin() )
                                             {{ $influencer->influencerName }}
                                             @endif
                                         </a>
