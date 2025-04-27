@@ -56,7 +56,7 @@
 
             <div class="dropdown-center">
                 <button class="btn btn-secondary dropdown-toggle drop_down drop__width" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  naviguer
+                  Naviguer
                 </button>
                 <ul class="dropdown-menu" style="padding: 0px">
 

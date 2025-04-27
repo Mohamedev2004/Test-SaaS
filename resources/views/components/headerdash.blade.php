@@ -47,7 +47,7 @@
                                 @if (auth()->user()->role === 'admin')
                                 <div class="dropdown-center" id="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle naviguer"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      naviguer
+                                      Naviguer
                                     </button>
                                     <ul class="dropdown-menu" style="padding: 0px">
                                       <li class="li_dropdown"><a class="dropdown-item small__btn d-none d-sm-flex d-xl-flex fill__btn  font-xs drop__width" href="{{ route('welcome_admin') }}">Acceuil</a></li>
